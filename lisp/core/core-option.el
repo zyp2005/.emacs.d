@@ -6,11 +6,24 @@
 
 ;; 在启动期间和之后调整垃圾收集阈值
 
-(let ((normal-gc-cons-threshold (* 20 1024 1024))
-      (init-gc-cons-threshold (* 128 1024 1024)))
-  (setq gc-cons-threshold init-gc-cons-threshold)
+(let ((init-gc-cons-threshold (* 128 1024 1024)))
+  (setq gc-cons-threshold most-positive-fixnum)
   (add-hook 'emacs-startup-hook
-            (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
+            (lambda () (setq gc-cons-threshold (* 128 1024 1024)))))
+
+(defvar k-gc-timer
+  (run-with-idle-timer 15 t
+                       'garbage-collect))
+(defmacro k-time (&rest body)
+  "Measure and return the time it takes evaluating BODY."
+  `(let ((time (current-time)))
+     ,@body
+     (float-time (time-since time))))
+(defvar k-gc-timer
+  (run-with-idle-timer 15 t
+                       (lambda ()
+                         (message "Garbage Collector has run for %.06fsec"
+                                  (k-time (garbage-collect))))))
 
 (electric-pair-mode t)                       ; 自动补全括号
 (add-hook 'prog-mode-hook #'show-paren-mode) ; 编程模式下，光标在括号上时高亮另一个括号
@@ -27,7 +40,7 @@
 (setq default-tab-width 4)
 (setq tab-width 4)
 (setq c-basic-offset 4)
-(global-hl-line-mode 1)
+;(global-hl-line-mode 1)
 
 (savehist-mode 1)                            ; （可选）打开 Buffer 历史记录保存
 (setq display-line-numbers-type 'relative)   ; （可选）显示相对行号
@@ -35,7 +48,7 @@
 (add-to-list 'default-frame-alist '(height . 55)) ; （可选）设定启动图形界面时的初始 Frame 高度（字符数）
 
 ;; 字体
-(set-face-attribute 'default nil :font (font-spec :family "Source Code Pro" :size 19))
+(set-face-attribute 'default nil :font (font-spec :family "Source Code Pro" :size 17))
 
 
 (provide 'core-option)

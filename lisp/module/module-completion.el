@@ -12,34 +12,34 @@
     ;; (company-tng-configure-default)
 
 (use-package company-quickhelp
-:hook ((company-mode . company-quickhelp-mode)))
+   :hook ((company-mode . company-quickhelp-mode)))
 
-(use-package lsp-mode
-  :init
-  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-    (setq lsp-keymap-prefix "C-c l")
-    (setq read-process-output-max (* 1024 1024)) ;; 1mb
-  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-         (c-mode . lsp)
-         ;; if you want which-key integration
-         (lsp-mode . lsp-enable-which-key-integration)
-         (lsp-mode . lsp-ui-mode))
-  :commands lsp)
-
-;; optionally
-(use-package lsp-ui
-  :commands lsp-ui-mode
-  :init
-  (setq	lsp-ui-sideline-update-mode "line"
-	lsp-ui-sideline-show-code-actions t
-	lsp-ui-sideline-show-hover nil
-	lsp-ui-sideline-show-diagnostics t
-	lsp-ui-sideline-show-symbol t)
-  :config
-  (lsp-ui-mode))
-
-
-(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
-(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+;(use-package lsp-mode
+;  :init
+;  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+;    (setq lsp-keymap-prefix "C-c l")
+;    (setq read-process-output-max (* 1024 1024)) ;; 1mb
+;  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+;         (c-mode . lsp)
+;         ;; if you want which-key integration
+;         (lsp-mode . lsp-enable-which-key-integration)
+;         (lsp-mode . lsp-ui-mode))
+;  :commands lsp)
+;
+;;; optionally
+;(use-package lsp-ui
+;  :commands lsp-ui-mode
+;  :init
+;  (setq	lsp-ui-sideline-update-mode "line"
+;	lsp-ui-sideline-show-code-actions t
+;	lsp-ui-sideline-show-hover nil
+;	lsp-ui-sideline-show-diagnostics t
+;	lsp-ui-sideline-show-symbol t)
+;  :config
+;  (lsp-ui-mode))
+;
+;
+;(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+;(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 
 (provide 'module-completion)

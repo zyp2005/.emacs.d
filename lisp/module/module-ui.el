@@ -7,8 +7,8 @@
 (use-package good-scroll
   :init (good-scroll-mode))
 
-(use-package gruvbox-theme
-  :init (load-theme 'gruvbox-dark-soft t))
+(use-package doom-themes
+  :init (load-theme 'doom-gruvbox-material t))
 
 (use-package color-theme-approximate
   :config (color-theme-approximate-on))
@@ -27,6 +27,7 @@
     (setq which-key-idle-delay 1)
     (setq which-key-idle-secondary-delay 0.05)
     (which-key-mode))
+
 
 
 (provide 'module-ui)
