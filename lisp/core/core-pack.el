@@ -7,21 +7,24 @@
                          ("org" . "https://mirrors.ustc.edu.cn/elpa/org/")))
 
 
-(setq package-check-signature nil)
-(require 'package)
-(unless (bound-and-true-p package--initialized)
-    (package-initialize))
-(unless package-archive-contents
-    (package-refresh-contents))
-(unless (package-installed-p 'use-package)
-    (package-refresh-contents)
-    (package-install 'use-package))
-(setq use-package-always-ensure t
-        ; use-package-always-defer t
-        use-package-always-demand nil
-        use-package-expand-minimally t
-        use-package-verbose t)
-(require 'use-package)
+(setq straight-use-package-by-default t)
+(setq straight-check-for-modifications '(watch-files))
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
+
+
+(straight-use-package 'use-package)
 
 
 (provide 'core-pack)

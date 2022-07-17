@@ -6,13 +6,35 @@
     (setq company-minimum-prefix-length 1
       company-idle-delay 0.0) ;; default is 0.2)
     (setq company-require-match nil) ; allow input string that do not match candidate words
-    (setq company-tooltip-maximum-width 60)
-    :config
+    (setq company-tooltip-maximum-width 60);    :config
     (global-company-mode))
-    ;; (company-tng-configure-default)
+    ;(company-tng-configure-default)
 
-(use-package company-quickhelp
-   :hook ((company-mode . company-quickhelp-mode)))
+;(use-package company-quickhelp
+;   :hook ((company-mode . company-quickhelp-mode)))
+
+;(use-package yasnippet)
+
+
+;(use-package markdown-mode
+;  :ensure t)
+
+;(use-package  posframe
+;  :straight ( posframe :type git :host github :repo "tumashu/posframe"))
+
+;(use-package lsp-bridge
+;  :straight (lsp-bridge :type git
+;			:host github
+;			:repo "manateelazycat/lsp-bridge"
+;			)
+;  :load-path "~/.emacs.d/straight/repos/lsp-bridge/"
+;  :config (global-lsp-bridge-mode))
+
+;(use-package el-patch
+;  :straight (el-patch :type git :host github :repo "raxod502/el-patch"
+;                      :fork (:host github
+;                             :repo "your-name/el-patch")))
+
 
 ;(use-package lsp-mode
 ;  :init

@@ -37,13 +37,14 @@
 (tool-bar-mode -2)                           ; 关闭 Tool bar
 (when (display-graphic-p) (toggle-scroll-bar -1)) ; 图形界面时关闭滚动条
 (setq-default indent-tabs-mode t)
-(setq default-tab-width 4)
+(setq-default default-tab-width 4)
 (setq tab-width 4)
-(setq c-basic-offset 4)
-;(global-hl-line-mode 1)
+(setq-default c-basic-offset 4)
+(global-hl-line-mode 1)
 
 (savehist-mode 1)                            ; （可选）打开 Buffer 历史记录保存
-(setq display-line-numbers-type 'relative)   ; （可选）显示相对行号
+(display-line-numbers-mode)
+(setq-default display-line-numbers-type 'relative)   ; （可选）显示相对行号
 (add-to-list 'default-frame-alist '(width . 90))  ; （可选）设定启动图形界面时的初始 Frame 宽度（字符数）
 (add-to-list 'default-frame-alist '(height . 55)) ; （可选）设定启动图形界面时的初始 Frame 高度（字符数）
 
