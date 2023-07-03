@@ -2,7 +2,10 @@
 ;;; Commentary:
 ;;; Code:
 (use-package undo-tree
-  :init (global-undo-tree-mode))
+  :init (global-undo-tree-mode)
+  :config (setq undo-tree-auto-save-history t)
+	(setq undo-tree-history-directory-alist
+	'(("." . "~/.emacs.d/emacs_undo"))))
 
 (use-package good-scroll
   :init (good-scroll-mode))
