@@ -5,13 +5,14 @@
   :init (global-undo-tree-mode)
   :config (setq undo-tree-auto-save-history t)
 	(setq undo-tree-history-directory-alist
-	'(("." . "~/.emacs.d/emacs_undo"))))
+	'(("." . "~/.emacs.d/emacs_undo")))
+	)
 
 (use-package good-scroll
   :init (good-scroll-mode))
 
 (use-package doom-themes
-  :init (load-theme 'doom-gruvbox-material t))
+  :init (load-theme 'doom-gruvbox-material t))  ;-light -material
 
 (use-package color-theme-approximate
   :config (color-theme-approximate-on))

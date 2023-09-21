@@ -66,6 +66,11 @@
 (general-define-key
  "C-c p" '(:keymap projectile-command-map :package projectile))
 
+;undo
+(general-def 'normal
+  "u" 'undo-tree-undo
+  "U" 'undo-tree-visualize)
+
 
 (provide 'core-mapping)
 
