@@ -6,6 +6,7 @@
 (use-package evil
   :init
   (evil-mode t)
+    (setq evil-want-C-u-scroll t)
   )
 
 (use-package general)
@@ -44,8 +45,8 @@
   :keymaps 'normal
   :prefix "SPC")
 
-(general-swap-key nil 'motion
-  ";" ":")
+;(general-swap-key nil 'motion
+;  ";" ":")
 ;; Searching
 (advice-add 'evil-search-next :after #'evil-scroll-line-to-center)
 (advice-add 'evil-search-next :after #'evil-scroll-line-to-center)
@@ -63,13 +64,32 @@
 	"M-<left>" 'evil-window-decrease-width
 	"M-<down>" 'evil-window-decrease-height
 	"M-<up>" 'evil-window-increase-height)
+
 (general-define-key
  "C-c p" '(:keymap projectile-command-map :package projectile))
+
+
+;;(general-def 'normal
+;;  "c" (general-key-dispatch 'evil-change
+;;                    "ow" 'toggle-word-wrap
+;;                    "tb" 'some-command
+;;                    "c" 'evil-change-whole-line
+;;                    ;; alternatively if there was no linewise version:
+;;                    "c" (general-simulate-key ('evil-change "c"))))
+
 
 ;undo
 (general-def 'normal
   "u" 'undo-tree-undo
   "U" 'undo-tree-visualize)
+
+;make c-j/c-k work in vertico selection
+(general-def 'vertico-map
+  "C-j" 'vertico-next
+  "C-k" 'vertico-previous)
+
+(general-def 'normal
+  "o" 'below-and-format)
 
 
 (provide 'core-mapping)

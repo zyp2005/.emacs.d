@@ -4,7 +4,8 @@
 (provide 'module-editor)
 
 (use-package autopair
-  :config (autopair-global-mode))
+  :config (autopair-global-mode)
+ )
 
 ;(use-package lsp-bridge
 ;  :straight (lsp-bridge :type git

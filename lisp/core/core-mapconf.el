@@ -25,6 +25,13 @@
   (setq evil-split-window-below t)
   (evil-window-split))
 
+(defun below-and-format(count)
+  (interactive "p")
+  (if (eglot-current-server)
+      (eglot-format (line-beginning-position) (line-end-position)))
+  (evil-open-below count))
+
+
 (provide 'core-mapconf)
 
 ;;; core-mapconf.el ends here
