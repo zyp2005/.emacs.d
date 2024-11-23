@@ -29,7 +29,7 @@
   :init (good-scroll-mode))
 
 (use-package doom-themes
-  :init (load-theme 'doom-gruvbox-light t))  ;-light -material
+  :init (load-theme 'doom-gruvbox-material t))  ;-light -material
 
 (use-package color-theme-approximate
   :config (color-theme-approximate-on))
@@ -53,7 +53,7 @@
   :straight (awesome-tab :type git :host github :repo "manateelazycat/awesome-tab")
   :config
   (awesome-tab-mode t)
-  (setq awesome-tab-height 100)
+  (setq awesome-tab-height 130)
   (defun awesome-tab-buffer-groups ()
   "`awesome-tab-buffer-groups' control buffers' group rules.
   Group awesome-tab with mode if buffer is derived from `eshell-mode' `emacs-lisp-mode' `dired-mode' `org-mode' `magit-mode'.
@@ -112,13 +112,17 @@
   (setq treesit-auto-install 'prompt)
   (setq treesit-font-lock-level 4)
   (global-treesit-auto-mode)
-(setq-default c-ts-mode-indent-offset 4)
-(setq c-ts-mode-indent-style 'bsd)
+    (setq-default c-ts-mode-indent-offset 4)
+    (setq-default c++-ts-mode-indent-offset 4)
+    (setq c-ts-mode-indent-style 'bsd)
   )
 
 ;(use-package  posframe
 ;  :straight ( posframe :type git :host github :repo "tumashu/posframe"))
 
+(use-package eldoc-box
+  :config
+  (add-hook 'eglot-managed-mode-hook #'eldoc-box-hover-mode t))
 
 
 

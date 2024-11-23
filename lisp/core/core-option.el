@@ -64,7 +64,8 @@
 (setq c-default-style "microsoft")
 
 ;; 字体
-(set-face-attribute 'default nil :font (font-spec :family "Source Code Pro" :size 30))
+(set-face-attribute 'default nil :font (font-spec :family "Source Code Pro" :size 23))
+;;(set-face-attribute 'default nil :font (font-spec :family "Source Code Pro" :size 19))
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)

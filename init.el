@@ -10,10 +10,23 @@
 
 (add-to-list 'load-path "~/.emacs.d/lisp/core/") ; 设定源码加载路径
 (add-to-list 'custom-theme-load-path "~/.emacs.d/theme")
-(setq comp-speed 4)
+(setq comp-sped 4)
 (require 'core-init) ;; emacs配置的开始
 ;;(global-tree-sitter-mode)
 ;;(add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
 
 (provide 'init)
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("f13d72c887ce3a07c58af45b9fff8abdb2220942d28e4b5c4acae010b784c5b4" "e3daa8f18440301f3e54f2093fe15f4fe951986a8628e98dcd781efbec7a46f2" default)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
