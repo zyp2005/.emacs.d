@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: Doxygen for enum and struct
+# key: dos
+# group: Doxygen
+# --
+/*!
+ * @brief ${1:简明}
+ * @details
+ * ${2:详细信息}
+ * @note ${3:注意事项}
+ */

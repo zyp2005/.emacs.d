@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name: test
+# key: test
+# --
+/*!
+ * @file XXX.h
+ * @brief 摘要
+ * @details 详情
+ * @mainpage 主页
+ * @author 作者
+ * @email youremail@youremail.com
+ * @version V1.0.0
+ * @date XXXX-XX-XX
+ * @note 注意事项
+ * @since Date            Version        Author    Description
+ * @since XXXX-XX-XX    V1.0.0        作者        XXX
+ * @license XXX公司(许可证)
+ */

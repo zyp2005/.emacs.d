@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name: Doxygen for function
+# key: dof
+# group: Doxygen
+# --
+/*!
+ * @brief ${1:函数功能}
+ * @details
+ * ${2:详情}
+ * @param[in]  ${3:param1+说明}  
+ * @param[out] ${4:param1+说明}
+ * @return    ${5:return说明}
+ *         @retval 0:    成功
+ *         @retval -1: 失败
+ * @warning    ${6:警告: XXX不能为空等}
+ * @note    ${7:注意事项}
+ * @see        ${8:请参考XXX}
+ */

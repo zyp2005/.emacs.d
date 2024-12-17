@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: /*====name====*/
+# key: ==
+# --
+/*${1:$(make-string (/ (- 80 (length yas-text) 6) 2) ?=)} ${1:Name} ${1:$(make-string (/ (- 80 (length yas-text) 6) 2) ?=)}*/
