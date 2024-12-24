@@ -47,11 +47,53 @@ If failed try to complete the common part with `company-complete-common'"
 ;)
 
 (require 'eglot)
-(add-to-list 'eglot-server-programs '((c++-mode c-mode c-ts-mode c++-ts-mode) . ("clangd" "--header-insertion=never")))
+;; 检测操作系统
+(cond
+  ;; Windows系统
+  ((eq system-type 'windows-nt)
+   (add-to-list 'eglot-server-programs '((c++-mode c-mode c-ts-mode c++-ts-mode) . ("D:\\msys2\\build_bin\\ccls"))))
+  ;; Linux系统
+  ((eq system-type 'gnu/linux)
+   (add-to-list 'eglot-server-programs '((c++-mode c-mode c-ts-mode c++-ts-mode) . ("clangd" "--header-insertion=never --enable-config"))))
+  ;; 其他系统可以根据需要添加
+  ;; ...
+  ;; 默认配置，如果需要的话
+  ((add-to-list 'eglot-server-programs '((c++-mode c-mode c-ts-mode c++-ts-mode) . ("clangd" "--header-insertion=never --enable-config")))
+   ;; 默认配置代码
+   ))
 (add-hook 'c-mode-hook #'eglot-ensure)
 (add-hook 'c-ts-mode-hook #'eglot-ensure)
 (add-hook 'c++-mode-hook #'eglot-ensure)
 (add-hook 'c++-ts-mode-hook #'eglot-ensure)
+
+;;ccls的配置
+(defun eglot-ccls-inheritance-hierarchy (&optional derived)
+  "Show inheritance hierarchy for the thing at point.
+If DERIVED is non-nil (interactively, with prefix argument), show
+the children of class at point."
+  (interactive "P")
+  (if-let* ((res (jsonrpc-request
+                  (eglot--current-server-or-lose)
+                  :$ccls/inheritance
+                  (append (eglot--TextDocumentPositionParams)
+                          `(:derived ,(if derived t :json-false))
+                          '(:levels 100) '(:hierarchy t))))
+            (tree (list (cons 0 res))))
+      (with-help-window "*ccls inheritance*"
+        (with-current-buffer standard-output
+          (while tree
+            (pcase-let ((`(,depth . ,node) (pop tree)))
+              (cl-destructuring-bind (&key uri range) (plist-get node :location)
+                (insert (make-string depth ?\ ) (plist-get node :name) "\n")
+                (make-text-button (+ (point-at-bol 0) depth) (point-at-eol 0)
+                                  'action `(lambda (_arg)
+                                            (interactive)
+                                            (find-file (eglot--uri-to-path ',uri))
+                                            (goto-char (car (eglot--range-region ',range)))))
+                (cl-loop for child across (plist-get node :children)
+                         do (push (cons (1+ depth) child) tree)))))))
+(eglot--error "Hierarchy unavailable")))
+
 
 (defun my-eglot-flycheck-setup ()
   "Enable Flycheck when Eglot is not active, and disable Flycheck when Eglot is active."

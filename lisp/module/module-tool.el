@@ -2,6 +2,15 @@
 ;;; Commentary:
 ;;; Code:
 
+;; 项目管理
+(use-package projectile
+  :ensure t
+  :init
+  (projectile-mode +1)
+  :bind (:map projectile-mode-map
+              ("C-c p" . projectile-command-map)))
+(add-hook 'project-find-functions #'project-projectile)
+
 (use-package vertico
   :init
   (vertico-mode)
@@ -42,6 +51,7 @@
 (use-package flycheck
   :hook                        ; 为模式设置 hook
   (prog-mode . flycheck-mode))
+
 
 (use-package ace-window
   :bind (("C-x o" . 'ace-window))
