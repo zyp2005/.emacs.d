@@ -86,6 +86,9 @@
             )
   nil)
 
+;; 防止byte-complie的memql的警告, 不会找到错误
+(setq byte-compile-warnings nil) 
+
 
 (provide 'core-option)
 
