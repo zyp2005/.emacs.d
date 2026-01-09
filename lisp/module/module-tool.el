@@ -2,6 +2,15 @@
 ;;; Commentary:
 ;;; Code:
 
+;; 项目管理
+(use-package projectile
+  :ensure t
+  :init
+  (projectile-mode +1)
+  :bind (:map projectile-mode-map
+              ("C-c p" . projectile-command-map)))
+(add-hook 'project-find-functions #'project-projectile)
+
 (use-package vertico
   :init
   (vertico-mode)
@@ -42,6 +51,7 @@
 (use-package flycheck
   :hook                        ; 为模式设置 hook
   (prog-mode . flycheck-mode))
+
 
 (use-package ace-window
   :bind (("C-x o" . 'ace-window))
@@ -230,6 +240,28 @@ Main data structure of the dispatcher with the form:
 		'consult-line)))
        new-bindings)
       (setq ad-return-value (cons new-msg new-bindings)))))
+
+(use-package citre
+  :defer t
+  :init
+  ;; This is needed in `:init' block for lazy load to work.
+  (require 'citre-config)
+  ;; Bind your frequently used commands.  Alternatively, you can define them
+  ;; in `citre-mode-map' so you can only use them when `citre-mode' is enabled.
+  (global-set-key (kbd "C-x c j") 'citre-jump)
+  (global-set-key (kbd "C-x c J") 'citre-jump-back)
+  (global-set-key (kbd "C-x c p") 'citre-ace-peek)
+  (global-set-key (kbd "C-x c u") 'citre-update-this-tags-file)
+  :config
+  (setq
+   citre-edit-ctags-options-manually t
+   citre-auto-enable-citre-mode-modes '(verilog-mode)
+   citre-auto-enable-citre-mode-backends '(tags global)
+   citre-default-create-tags-file-location 'global-cache
+   citre-peek-fill-fringe nil
+   citre-peek-use-dashes-as-horizontal-border t
+   )
+  (set-face-attribute 'citre-peek-border-face nil :height 5 :background "SlateGray3" :extend t))
 
 ;;;###autoload
 (defun my/search-project-for-symbol-at-point ()

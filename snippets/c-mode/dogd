@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: Doxygen for group def
+# key: dogd
+# group: Doxygen
+# --
+/*!
+ * @defgroup ${1:name} ${2:简明标题}
+ * ${3: 详细描述}
+ * @{
+ */

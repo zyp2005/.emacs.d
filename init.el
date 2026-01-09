@@ -10,7 +10,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/lisp/core/") ; 设定源码加载路径
 (add-to-list 'custom-theme-load-path "~/.emacs.d/theme")
-(setq comp-speed 4)
+(setq comp-sped 4)
 (require 'core-init) ;; emacs配置的开始
 ;;(global-tree-sitter-mode)
 ;;(add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)

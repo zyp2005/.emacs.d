@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: Doxygen line
+# key: dol
+# group Doxygen
+# --
+//!< 

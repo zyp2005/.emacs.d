@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: Doxygen file's header 
+# key: doh
+# group: Doxygen
+# --
+/*!
+ * @file `(file-name-nondirectory (buffer-file-name))`
+ * @brief ${1:摘要}
+ * @details ${2:详情}
+ * @author ${3:作者}
+ * @version ${4:V1.0.0}
+ * @date ${5:XXXX-XX-XX}
+ * @note ${6:注意事项}
+ * @since Date            Version        Author    Description
+ * @since ${7:XXXX-XX-XX}    ${8:V1.0.0}       ${9:作者}        ${10:XXX}
+ * @copyright ${11:XXX公司(许可证)}
+ */

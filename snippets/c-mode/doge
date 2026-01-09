@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: Doxygen for group end
+# key: doge
+# group: Doxygen
+# --
+/*! @} */
